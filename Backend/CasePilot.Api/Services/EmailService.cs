@@ -1,57 +1,54 @@
 using CasePilot.Api.Services.Interfaces;
-using MailKit.Net.Smtp;
-using MailKit.Security;
-using MimeKit;
+using System.Net.Http.Json;
 
 namespace CasePilot.Api.Services;
 
 /// <summary>
-/// Sends transactional emails via SMTP (works with Gmail, Outlook, etc.).
+/// Sends transactional emails via the Brevo HTTP API (https://api.brevo.com).
+///
+/// Brevo is used instead of SMTP because hosts like Render block outbound SMTP
+/// ports (25/465/587). The Brevo API runs over HTTPS (443), which is not blocked.
 ///
 /// Configuration (appsettings.json / environment variables):
-///   Email:Host        — SMTP server (default: smtp.gmail.com)
-///   Email:Port        — SMTP port (default: 587)
-///   Email:Username    — SMTP login / sender address
-///   Email:Password    — SMTP password or Gmail App Password
-///   Email:FromAddress — Sender address (defaults to Username)
+///   Brevo:ApiKey      — Brevo API key (Settings → SMTP & API → API Keys)
+///   Email:Username    — Sender address (must be a VERIFIED sender in Brevo)
+///   Email:FromAddress — Sender address (defaults to Email:Username)
 ///   Email:FromName    — Sender display name (default: CasePilot)
 ///
-/// Gmail setup (free, 500 emails/day, any recipient):
-///   1. Enable 2-Step Verification on your Google account
-///   2. Go to account.google.com → Security → App Passwords
-///   3. Create an app password for "Mail" and paste it as Email:Password
+/// Brevo setup (free, 300 emails/day, any recipient):
+///   1. Create an account at brevo.com
+///   2. Senders → verify the sender email you'll send from
+///   3. Settings → SMTP & API → API Keys → create a key, set it as Brevo:ApiKey
 ///
-/// Leave Email:Username empty → falls back to console log (local dev without email).
+/// Leave Brevo:ApiKey empty → falls back to console log (local dev without email).
 /// </summary>
 public class ResendEmailService : IEmailService
 {
+    private static readonly HttpClient _http = new() { Timeout = TimeSpan.FromSeconds(30) };
+
     private readonly ILogger<ResendEmailService> _logger;
-    private readonly string _host;
-    private readonly int _port;
-    private readonly string _username;
-    private readonly string _password;
+    private readonly string _apiKey;
     private readonly string _from;
     private readonly string _fromName;
 
     public ResendEmailService(IConfiguration configuration, ILogger<ResendEmailService> logger)
     {
         _logger   = logger;
-        _host     = configuration["Email:Host"]     ?? "smtp.gmail.com";
-        _port     = int.TryParse(configuration["Email:Port"], out var p) ? p : 587;
-        _username = configuration["Email:Username"] ?? string.Empty;
-        _password = configuration["Email:Password"] ?? string.Empty;
+        _apiKey   = configuration["Brevo:ApiKey"]   ?? string.Empty;
         _fromName = configuration["Email:FromName"] ?? "CasePilot";
-        _from     = configuration["Email:FromAddress"] ?? _username;
+        _from     = configuration["Email:FromAddress"]
+                    ?? configuration["Email:Username"]
+                    ?? string.Empty;
     }
 
     public async Task SendOtpAsync(string toEmail, string code)
     {
-        if (string.IsNullOrWhiteSpace(_username))
+        if (string.IsNullOrWhiteSpace(_apiKey))
         {
             Console.WriteLine(
                 "\n═══════════════════════════════════════════════════\n" +
                 $"  📧  OTP CODE for {toEmail}: {code}\n" +
-                "  (configure Email:Username + Email:Password for real delivery)\n" +
+                "  (configure Brevo:ApiKey for real delivery)\n" +
                 "═══════════════════════════════════════════════════\n");
             return;
         }
@@ -76,13 +73,13 @@ public class ResendEmailService : IEmailService
 
     public async Task SendPasswordResetAsync(string toEmail, string resetLink)
     {
-        if (string.IsNullOrWhiteSpace(_username))
+        if (string.IsNullOrWhiteSpace(_apiKey))
         {
             Console.WriteLine(
                 "\n═══════════════════════════════════════════════════\n" +
                 $"  📧  PASSWORD RESET for {toEmail}\n" +
                 $"  🔗  Link: {resetLink}\n" +
-                "  (configure Email:Username + Email:Password for real delivery)\n" +
+                "  (configure Brevo:ApiKey for real delivery)\n" +
                 "═══════════════════════════════════════════════════\n");
             return;
         }
@@ -116,7 +113,7 @@ public class ResendEmailService : IEmailService
     {
         var dateStr = hearingDate.ToString("dd.MM.yyyy HH:mm");
 
-        if (string.IsNullOrWhiteSpace(_username))
+        if (string.IsNullOrWhiteSpace(_apiKey))
         {
             Console.WriteLine(
                 "\n═══════════════════════════════════════════════════\n" +
@@ -155,22 +152,31 @@ public class ResendEmailService : IEmailService
     {
         try
         {
-            var message = new MimeMessage();
-            message.From.Add(new MailboxAddress(_fromName, _from));
-            message.To.Add(new MailboxAddress(string.Empty, to));
-            message.Subject = subject;
-            message.Body = new TextPart("html") { Text = htmlBody };
+            var payload = new
+            {
+                sender      = new { name = _fromName, email = _from },
+                to          = new[] { new { email = to } },
+                subject,
+                htmlContent = htmlBody
+            };
 
-            using var client = new SmtpClient();
-            await client.ConnectAsync(_host, _port, SecureSocketOptions.StartTls);
-            await client.AuthenticateAsync(_username, _password);
-            await client.SendAsync(message);
-            await client.DisconnectAsync(quit: true);
+            using var request = new HttpRequestMessage(HttpMethod.Post, "https://api.brevo.com/v3/smtp/email");
+            request.Headers.Add("api-key", _apiKey);
+            request.Headers.Add("accept", "application/json");
+            request.Content = JsonContent.Create(payload);
+
+            using var response = await _http.SendAsync(request);
+            if (!response.IsSuccessStatusCode)
+            {
+                var body = await response.Content.ReadAsStringAsync();
+                _logger.LogError("Brevo rejected email to {Email}: {Status} {Body}",
+                    to, (int)response.StatusCode, body);
+            }
         }
         catch (Exception ex)
         {
             // Email failure never crashes the auth flow
-            _logger.LogError(ex, "Failed to send email to {Email} via {Host}:{Port}", to, _host, _port);
+            _logger.LogError(ex, "Failed to send email to {Email} via Brevo", to);
         }
     }
 }
