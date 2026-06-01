@@ -433,7 +433,10 @@ export function CaseDetailPage() {
         <Tabs
           value={activeTab}
           onChange={(_, value) => setActiveTab(value)}
-          sx={{ px: 2.5, pt: 1.25 }}
+          variant="scrollable"
+          scrollButtons="auto"
+          allowScrollButtonsMobile
+          sx={{ px: { xs: 1, md: 2.5 }, pt: 1.25 }}
         >
           <Tab
             icon={<DescriptionOutlinedIcon fontSize="small" />}
@@ -452,7 +455,7 @@ export function CaseDetailPage() {
           />
         </Tabs>
 
-        <Box sx={{ p: 3.5, pt: 3 }}>
+        <Box sx={{ p: { xs: 1.75, md: 3.5 }, pt: { xs: 2.5, md: 3 } }}>
           <AnimatePresence mode="wait">
             {activeTab === 0 ? (
               <Stack
@@ -549,15 +552,15 @@ export function CaseDetailPage() {
                 <TableContainer
                   component={Paper}
                   variant="outlined"
-                  sx={{ width: '100%', borderRadius: 0, overflowX: 'auto' }}
+                  sx={{ width: '100%', borderRadius: 0, overflowX: 'auto', display: { xs: 'none', md: 'block' } }}
                 >
                   <Table
                     sx={{
-                      minWidth: { xs: 860, lg: 1080, xl: 1220 },
+                      minWidth: { md: 860, lg: 1080, xl: 1220 },
                       '& .MuiTableCell-root': {
-                        py: { xs: 1.8, md: 2.2 },
-                        px: { xs: 1.8, md: 2.3 },
-                        fontSize: { xs: '0.94rem', md: '1rem' }
+                        py: 2.2,
+                        px: 2.3,
+                        fontSize: '1rem'
                       }
                     }}
                   >
@@ -664,6 +667,73 @@ export function CaseDetailPage() {
                   </Table>
                 </TableContainer>
 
+                {/* Mobile: document cards */}
+                <Box sx={{ display: { xs: 'block', md: 'none' } }}>
+                  {isLoadingDocuments ? (
+                    <Typography sx={{ py: 2, color: 'text.secondary' }}>Se încarcă documentele...</Typography>
+                  ) : documents.length === 0 ? (
+                    <Typography sx={{ py: 2, color: 'text.secondary' }}>
+                      Nu există documente înregistrate pentru acest dosar.
+                    </Typography>
+                  ) : (
+                    <Stack spacing={1.5}>
+                      {documents.map((doc) => (
+                        <Paper key={doc.id} variant="outlined" sx={{ p: 2, borderRadius: 2.5 }}>
+                          <Stack spacing={1.25}>
+                            <Typography sx={{ fontWeight: 800, fontSize: '0.96rem', wordBreak: 'break-word' }}>
+                              {doc.name}
+                            </Typography>
+                            <Stack direction="row" spacing={1} justifyContent="space-between" alignItems="baseline">
+                              <Typography sx={{ fontSize: '0.82rem', color: 'text.secondary', fontWeight: 700 }}>
+                                {doc.type}
+                              </Typography>
+                              <Typography sx={{ fontSize: '0.82rem', color: 'text.secondary' }}>
+                                {formatDateOnly(doc.uploadedAt)}
+                              </Typography>
+                            </Stack>
+                            <Divider />
+                            <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
+                              <Button
+                                size="small"
+                                variant="outlined"
+                                startIcon={<FileDownloadOutlinedIcon />}
+                                disabled={!(doc.sizeBytes && doc.sizeBytes > 0)}
+                                onClick={() => {
+                                  if (caseId && doc.sizeBytes && doc.sizeBytes > 0) {
+                                    downloadCaseDocument(caseId, doc.id, doc.name).catch(console.error);
+                                  }
+                                }}
+                                sx={{ minHeight: 36, flex: 1 }}
+                              >
+                                Descarcă
+                              </Button>
+                              <Button
+                                size="small"
+                                variant="outlined"
+                                startIcon={<EditOutlinedIcon />}
+                                onClick={() => handleEdit(doc)}
+                                sx={{ minHeight: 36, flex: 1 }}
+                              >
+                                Editează
+                              </Button>
+                              <Button
+                                size="small"
+                                color="error"
+                                variant="outlined"
+                                startIcon={<DeleteOutlineOutlinedIcon />}
+                                onClick={() => handleDelete(doc.id)}
+                                sx={{ minHeight: 36, flex: 1 }}
+                              >
+                                Șterge
+                              </Button>
+                            </Stack>
+                          </Stack>
+                        </Paper>
+                      ))}
+                    </Stack>
+                  )}
+                </Box>
+
               </Stack>
             ) : null}
 
@@ -697,15 +767,15 @@ export function CaseDetailPage() {
                 <TableContainer
                   component={Paper}
                   variant="outlined"
-                  sx={{ width: '100%', borderRadius: 0, overflowX: 'auto' }}
+                  sx={{ width: '100%', borderRadius: 0, overflowX: 'auto', display: { xs: 'none', md: 'block' } }}
                 >
                   <Table
                     sx={{
-                      minWidth: { xs: 760, lg: 980, xl: 1100 },
+                      minWidth: { md: 760, lg: 980, xl: 1100 },
                       '& .MuiTableCell-root': {
-                        py: { xs: 1.75, md: 2.1 },
-                        px: { xs: 1.7, md: 2.2 },
-                        fontSize: { xs: '0.93rem', md: '0.99rem' }
+                        py: 2.1,
+                        px: 2.2,
+                        fontSize: '0.99rem'
                       }
                     }}
                   >
@@ -770,6 +840,64 @@ export function CaseDetailPage() {
                     </TableBody>
                   </Table>
                 </TableContainer>
+
+                {/* Mobile: hearing cards */}
+                <Box sx={{ display: { xs: 'block', md: 'none' } }}>
+                  {hearings.length ? (
+                    <Stack spacing={1.5}>
+                      {hearings.map((hearing) => (
+                        <Paper key={hearing.id} variant="outlined" sx={{ p: 2, borderRadius: 2.5 }}>
+                          <Stack spacing={1.25}>
+                            <Stack direction="row" justifyContent="space-between" alignItems="baseline" spacing={1}>
+                              <Typography sx={{ fontWeight: 800, fontSize: '0.96rem', wordBreak: 'break-word' }}>
+                                {hearing.title}
+                              </Typography>
+                              <Typography sx={{ color: 'secondary.main', fontWeight: 800, fontSize: '0.85rem', flexShrink: 0 }}>
+                                {formatDateOnly(hearing.date)}
+                              </Typography>
+                            </Stack>
+                            {hearing.courtRoom ? (
+                              <Typography sx={{ fontSize: '0.85rem', color: 'text.secondary' }}>
+                                Sala: {hearing.courtRoom}
+                              </Typography>
+                            ) : null}
+                            {hearing.note ? (
+                              <Typography sx={{ fontSize: '0.85rem', color: 'text.secondary', wordBreak: 'break-word' }}>
+                                {hearing.note}
+                              </Typography>
+                            ) : null}
+                            <Divider />
+                            <Stack direction="row" spacing={1} justifyContent="flex-end" flexWrap="wrap" useFlexGap>
+                              <Button
+                                size="small"
+                                variant="outlined"
+                                startIcon={<EditOutlinedIcon />}
+                                onClick={() => openHearingDialog(hearing)}
+                                sx={{ minHeight: 36 }}
+                              >
+                                Editează
+                              </Button>
+                              <Button
+                                size="small"
+                                color="error"
+                                variant="outlined"
+                                startIcon={<DeleteOutlineOutlinedIcon />}
+                                onClick={() => handleDeleteHearing(hearing.id)}
+                                sx={{ minHeight: 36 }}
+                              >
+                                Șterge
+                              </Button>
+                            </Stack>
+                          </Stack>
+                        </Paper>
+                      ))}
+                    </Stack>
+                  ) : (
+                    <Typography sx={{ py: 2, color: 'text.secondary' }}>
+                      Nu există termene înregistrate pentru acest dosar.
+                    </Typography>
+                  )}
+                </Box>
               </Stack>
             ) : null}
 

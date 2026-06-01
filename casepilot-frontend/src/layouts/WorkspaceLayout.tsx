@@ -1,10 +1,12 @@
 import {
   Box,
   Divider,
+  IconButton,
   List,
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  Tooltip,
   Typography,
   Button
 } from '@mui/material';
@@ -99,6 +101,21 @@ export function WorkspaceLayout() {
             <Typography variant="h6" sx={{ fontWeight: 800 }}>
               CasePilot {isAdmin && '— Admin'}
             </Typography>
+            {/* Mobile-only logout (desktop has the button at the bottom) */}
+            <Tooltip title="Deconectare">
+              <IconButton
+                onClick={handleLogout}
+                aria-label="Deconectare"
+                sx={{
+                  display: { xs: 'inline-flex', md: 'none' },
+                  ml: 'auto',
+                  color: 'rgba(255,255,255,0.85)',
+                  '&:hover': { backgroundColor: 'rgba(255,255,255,0.12)', color: '#fff' }
+                }}
+              >
+                <LogoutOutlinedIcon />
+              </IconButton>
+            </Tooltip>
           </Box>
         </motion.div>
 
