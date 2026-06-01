@@ -1,0 +1,959 @@
+{
+  "CasePilot.Api.dll": {
+    "D:\\Facultate\\An_II\\Sem4\\MPP\\A4-partial\\Backend\\CasePilot.Api\\Services\\AuthService.cs": {
+      "CasePilot.Api.Services.AuthService": {
+        "CasePilot.Api.DTOs.Responses.LoginStepResponse CasePilot.Api.Services.AuthService::LoginStep1(System.String,System.String)": {
+          "Lines": {
+            "35": 16,
+            "36": 16,
+            "37": 16,
+            "38": 16,
+            "39": 16,
+            "40": 16,
+            "41": 16,
+            "43": 16,
+            "44": 2,
+            "48": 14,
+            "49": 13,
+            "50": 13,
+            "51": 13,
+            "53": 1,
+            "55": 1,
+            "56": 1,
+            "57": 1,
+            "58": 1,
+            "59": 1,
+            "60": 1,
+            "61": 1,
+            "63": 14,
+            "64": 1,
+            "67": 13,
+            "68": 13,
+            "71": 13,
+            "72": 13,
+            "73": 13,
+            "74": 39,
+            "75": 0,
+            "77": 13,
+            "78": 13,
+            "79": 13,
+            "80": 13,
+            "81": 13,
+            "82": 13,
+            "83": 13,
+            "84": 13,
+            "85": 13,
+            "86": 13,
+            "87": 13,
+            "90": 13,
+            "91": 13,
+            "92": 13,
+            "93": 13,
+            "94": 13,
+            "95": 13,
+            "97": 13,
+            "98": 13,
+            "99": 13,
+            "100": 13,
+            "101": 13,
+            "102": 13,
+            "103": 16
+          },
+          "Branches": [
+            {
+              "Line": 43,
+              "Offset": 432,
+              "EndOffset": 434,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 2
+            },
+            {
+              "Line": 43,
+              "Offset": 432,
+              "EndOffset": 462,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 14
+            },
+            {
+              "Line": 48,
+              "Offset": 485,
+              "EndOffset": 487,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 13
+            },
+            {
+              "Line": 48,
+              "Offset": 485,
+              "EndOffset": 511,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            },
+            {
+              "Line": 56,
+              "Offset": 535,
+              "EndOffset": 537,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 1
+            },
+            {
+              "Line": 56,
+              "Offset": 535,
+              "EndOffset": 569,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 1
+            },
+            {
+              "Line": 63,
+              "Offset": 578,
+              "EndOffset": 580,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 1
+            },
+            {
+              "Line": 63,
+              "Offset": 578,
+              "EndOffset": 608,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 13
+            },
+            {
+              "Line": 74,
+              "Offset": 845,
+              "EndOffset": 820,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 0
+            },
+            {
+              "Line": 74,
+              "Offset": 845,
+              "EndOffset": 847,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 13
+            }
+          ]
+        },
+        "CasePilot.Api.DTOs.Responses.LoginResponse CasePilot.Api.Services.AuthService::LoginStep2VerifyCode(System.String,System.String,System.String,System.String)": {
+          "Lines": {
+            "110": 11,
+            "111": 11,
+            "112": 11,
+            "113": 11,
+            "114": 11,
+            "115": 11,
+            "116": 11,
+            "117": 11,
+            "119": 11,
+            "120": 0,
+            "122": 11,
+            "123": 0,
+            "125": 11,
+            "126": 1,
+            "128": 10,
+            "129": 0,
+            "132": 10,
+            "133": 10,
+            "136": 10,
+            "137": 11
+          },
+          "Branches": [
+            {
+              "Line": 119,
+              "Offset": 471,
+              "EndOffset": 473,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 119,
+              "Offset": 471,
+              "EndOffset": 478,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 11
+            },
+            {
+              "Line": 122,
+              "Offset": 498,
+              "EndOffset": 500,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 122,
+              "Offset": 498,
+              "EndOffset": 505,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 11
+            },
+            {
+              "Line": 125,
+              "Offset": 521,
+              "EndOffset": 523,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 1
+            },
+            {
+              "Line": 125,
+              "Offset": 521,
+              "EndOffset": 528,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 10
+            },
+            {
+              "Line": 128,
+              "Offset": 546,
+              "EndOffset": 548,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 128,
+              "Offset": 546,
+              "EndOffset": 553,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 10
+            }
+          ]
+        },
+        "System.Boolean CasePilot.Api.Services.AuthService::ResendVerificationCode(System.String)": {
+          "Lines": {
+            "144": 0,
+            "145": 0,
+            "146": 0,
+            "147": 0,
+            "149": 0,
+            "150": 0,
+            "153": 0,
+            "156": 0,
+            "157": 0,
+            "159": 0,
+            "160": 0,
+            "161": 0,
+            "162": 0,
+            "163": 0,
+            "164": 0,
+            "165": 0,
+            "166": 0,
+            "167": 0,
+            "168": 0,
+            "169": 0,
+            "171": 0,
+            "172": 0,
+            "173": 0,
+            "174": 0,
+            "175": 0,
+            "176": 0,
+            "178": 0,
+            "179": 0
+          },
+          "Branches": [
+            {
+              "Line": 149,
+              "Offset": 225,
+              "EndOffset": 227,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 149,
+              "Offset": 225,
+              "EndOffset": 245,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 149,
+              "Offset": 250,
+              "EndOffset": 252,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 149,
+              "Offset": 250,
+              "EndOffset": 260,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        },
+        "CasePilot.Api.DTOs.Responses.LoginResponse CasePilot.Api.Services.AuthService::Register(CasePilot.Api.DTOs.Requests.RegisterRequest)": {
+          "Lines": {
+            "186": 3,
+            "188": 3,
+            "189": 1,
+            "191": 2,
+            "192": 2,
+            "193": 2,
+            "194": 2,
+            "195": 2,
+            "196": 2,
+            "197": 2,
+            "198": 2,
+            "199": 2,
+            "200": 2,
+            "202": 2,
+            "205": 2,
+            "206": 2,
+            "207": 2,
+            "208": 2,
+            "209": 2,
+            "210": 2,
+            "211": 2,
+            "212": 2,
+            "213": 2,
+            "215": 2,
+            "218": 2,
+            "219": 2,
+            "220": 2,
+            "221": 2,
+            "222": 2,
+            "223": 2,
+            "225": 2,
+            "226": 2
+          },
+          "Branches": [
+            {
+              "Line": 188,
+              "Offset": 148,
+              "EndOffset": 150,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 188,
+              "Offset": 148,
+              "EndOffset": 161,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            },
+            {
+              "Line": 206,
+              "Offset": 408,
+              "EndOffset": 410,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 2
+            },
+            {
+              "Line": 206,
+              "Offset": 408,
+              "EndOffset": 465,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 2
+            }
+          ]
+        },
+        "CasePilot.Api.DTOs.Responses.LoginResponse CasePilot.Api.Services.AuthService::RefreshToken(System.String,System.String,System.String)": {
+          "Lines": {
+            "233": 3,
+            "234": 3,
+            "235": 3,
+            "236": 3,
+            "237": 3,
+            "238": 3,
+            "239": 3,
+            "240": 3,
+            "242": 3,
+            "243": 2,
+            "245": 1,
+            "246": 0,
+            "249": 1,
+            "250": 1,
+            "252": 1,
+            "253": 3
+          },
+          "Branches": [
+            {
+              "Line": 242,
+              "Offset": 466,
+              "EndOffset": 468,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 242,
+              "Offset": 466,
+              "EndOffset": 486,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            },
+            {
+              "Line": 242,
+              "Offset": 489,
+              "EndOffset": 491,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 2
+            },
+            {
+              "Line": 242,
+              "Offset": 489,
+              "EndOffset": 496,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            },
+            {
+              "Line": 245,
+              "Offset": 514,
+              "EndOffset": 516,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 245,
+              "Offset": 514,
+              "EndOffset": 521,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 1
+            }
+          ]
+        },
+        "System.Void CasePilot.Api.Services.AuthService::RevokeRefreshToken(System.String)": {
+          "Lines": {
+            "260": 2,
+            "261": 2,
+            "262": 2,
+            "264": 2,
+            "265": 2,
+            "266": 2,
+            "267": 2,
+            "268": 2,
+            "269": 2
+          },
+          "Branches": [
+            {
+              "Line": 264,
+              "Offset": 130,
+              "EndOffset": 132,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 2
+            },
+            {
+              "Line": 264,
+              "Offset": 130,
+              "EndOffset": 154,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            }
+          ]
+        },
+        "System.Void CasePilot.Api.Services.AuthService::RevokeAllUserTokens(System.Guid)": {
+          "Lines": {
+            "272": 2,
+            "273": 2,
+            "274": 2,
+            "275": 2,
+            "277": 12,
+            "278": 3,
+            "279": 3,
+            "280": 3,
+            "283": 2,
+            "284": 2,
+            "285": 2,
+            "287": 12,
+            "288": 3,
+            "289": 3,
+            "290": 3,
+            "292": 2,
+            "293": 2
+          },
+          "Branches": [
+            {
+              "Line": 277,
+              "Offset": 214,
+              "EndOffset": 187,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 3
+            },
+            {
+              "Line": 277,
+              "Offset": 214,
+              "EndOffset": 216,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 2
+            },
+            {
+              "Line": 287,
+              "Offset": 433,
+              "EndOffset": 406,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 3
+            },
+            {
+              "Line": 287,
+              "Offset": 433,
+              "EndOffset": 435,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 2
+            }
+          ]
+        },
+        "System.Boolean CasePilot.Api.Services.AuthService::ForgotPassword(System.String)": {
+          "Lines": {
+            "300": 3,
+            "301": 3,
+            "304": 3,
+            "305": 1,
+            "306": 1,
+            "307": 1,
+            "311": 2,
+            "312": 2,
+            "313": 2,
+            "314": 6,
+            "315": 0,
+            "317": 2,
+            "319": 2,
+            "320": 2,
+            "321": 2,
+            "322": 2,
+            "323": 2,
+            "324": 2,
+            "325": 2,
+            "326": 2,
+            "327": 2,
+            "328": 2,
+            "331": 2,
+            "332": 2,
+            "333": 2,
+            "334": 2,
+            "335": 2,
+            "336": 2,
+            "337": 2,
+            "339": 2,
+            "340": 3
+          },
+          "Branches": [
+            {
+              "Line": 304,
+              "Offset": 168,
+              "EndOffset": 170,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 304,
+              "Offset": 168,
+              "EndOffset": 211,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            },
+            {
+              "Line": 314,
+              "Offset": 429,
+              "EndOffset": 404,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 314,
+              "Offset": 429,
+              "EndOffset": 431,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 2
+            }
+          ]
+        },
+        "System.Boolean CasePilot.Api.Services.AuthService::ResetPassword(System.String,System.String)": {
+          "Lines": {
+            "347": 2,
+            "348": 2,
+            "349": 2,
+            "350": 2,
+            "352": 2,
+            "353": 1,
+            "355": 1,
+            "356": 0,
+            "359": 1,
+            "362": 1,
+            "363": 1,
+            "366": 1,
+            "368": 1,
+            "370": 1,
+            "372": 1,
+            "373": 2
+          },
+          "Branches": [
+            {
+              "Line": 352,
+              "Offset": 223,
+              "EndOffset": 225,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 352,
+              "Offset": 223,
+              "EndOffset": 233,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            },
+            {
+              "Line": 355,
+              "Offset": 253,
+              "EndOffset": 255,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 355,
+              "Offset": 253,
+              "EndOffset": 260,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            }
+          ]
+        },
+        "System.Collections.Generic.List`1<CasePilot.Api.DTOs.Responses.SessionResponse> CasePilot.Api.Services.AuthService::GetActiveSessions(System.Guid,System.Nullable`1<System.Guid>)": {
+          "Lines": {
+            "380": 2,
+            "381": 2,
+            "382": 2,
+            "383": 2,
+            "384": 2,
+            "385": 2,
+            "386": 2,
+            "387": 2,
+            "388": 2,
+            "389": 2,
+            "390": 2,
+            "391": 2,
+            "392": 2,
+            "393": 2,
+            "394": 2
+          },
+          "Branches": []
+        },
+        "System.Boolean CasePilot.Api.Services.AuthService::RevokeSession(System.Guid,System.Guid)": {
+          "Lines": {
+            "397": 1,
+            "398": 1,
+            "399": 1,
+            "401": 1,
+            "402": 0,
+            "404": 1,
+            "407": 1,
+            "408": 1,
+            "409": 1,
+            "410": 0,
+            "412": 1,
+            "413": 1,
+            "414": 1
+          },
+          "Branches": [
+            {
+              "Line": 401,
+              "Offset": 272,
+              "EndOffset": 274,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 401,
+              "Offset": 272,
+              "EndOffset": 282,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            },
+            {
+              "Line": 409,
+              "Offset": 489,
+              "EndOffset": 491,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 409,
+              "Offset": 489,
+              "EndOffset": 499,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            }
+          ]
+        },
+        "System.Void CasePilot.Api.Services.AuthService::UpdateSessionActivity(System.Guid)": {
+          "Lines": {
+            "417": 0,
+            "418": 0,
+            "419": 0,
+            "421": 0,
+            "422": 0,
+            "423": 0,
+            "424": 0,
+            "425": 0,
+            "426": 0
+          },
+          "Branches": [
+            {
+              "Line": 421,
+              "Offset": 177,
+              "EndOffset": 179,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 421,
+              "Offset": 177,
+              "EndOffset": 205,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "CasePilot.Api.DTOs.Responses.LoginResponse CasePilot.Api.Services.AuthService::BuildLoginResponse(CasePilot.Api.Models.AppUser,System.String,System.String)": {
+          "Lines": {
+            "433": 13,
+            "434": 13,
+            "436": 13,
+            "437": 13,
+            "438": 13,
+            "439": 13,
+            "440": 13,
+            "442": 13,
+            "443": 13,
+            "445": 13,
+            "448": 13,
+            "449": 13,
+            "450": 13,
+            "451": 13,
+            "452": 13,
+            "453": 13,
+            "454": 13,
+            "455": 13,
+            "456": 13,
+            "457": 13,
+            "460": 13,
+            "461": 13,
+            "462": 13,
+            "463": 13,
+            "464": 13,
+            "465": 13,
+            "466": 13,
+            "467": 13,
+            "468": 13,
+            "469": 13,
+            "470": 13,
+            "471": 13,
+            "474": 13,
+            "476": 13,
+            "478": 13,
+            "479": 13,
+            "480": 13,
+            "481": 13,
+            "482": 13,
+            "483": 13,
+            "484": 13,
+            "485": 13,
+            "486": 13,
+            "487": 13,
+            "488": 13,
+            "489": 13,
+            "490": 13
+          },
+          "Branches": [
+            {
+              "Line": 442,
+              "Offset": 155,
+              "EndOffset": 157,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 442,
+              "Offset": 155,
+              "EndOffset": 163,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 13
+            },
+            {
+              "Line": 443,
+              "Offset": 186,
+              "EndOffset": 188,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 443,
+              "Offset": 186,
+              "EndOffset": 194,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 13
+            },
+            {
+              "Line": 460,
+              "Offset": 378,
+              "EndOffset": 380,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 460,
+              "Offset": 378,
+              "EndOffset": 386,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 13
+            },
+            {
+              "Line": 460,
+              "Offset": 395,
+              "EndOffset": 397,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 460,
+              "Offset": 395,
+              "EndOffset": 403,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 13
+            }
+          ]
+        },
+        "System.String CasePilot.Api.Services.AuthService::GenerateNumericCode(System.Int32)": {
+          "Lines": {
+            "493": 13,
+            "494": 13,
+            "495": 13,
+            "496": 13,
+            "497": 13,
+            "498": 13,
+            "499": 13
+          },
+          "Branches": []
+        },
+        "System.String CasePilot.Api.Services.AuthService::GenerateSecureToken()": {
+          "Lines": {
+            "502": 15,
+            "503": 15,
+            "504": 15,
+            "505": 15,
+            "506": 15,
+            "507": 15
+          },
+          "Branches": []
+        },
+        "System.String CasePilot.Api.Services.AuthService::MaskEmail(System.String)": {
+          "Lines": {
+            "510": 13,
+            "511": 13,
+            "512": 13,
+            "514": 13,
+            "515": 13,
+            "517": 13,
+            "518": 13,
+            "519": 13,
+            "521": 13,
+            "522": 13
+          },
+          "Branches": [
+            {
+              "Line": 512,
+              "Offset": 24,
+              "EndOffset": 26,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 512,
+              "Offset": 24,
+              "EndOffset": 38,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 13
+            },
+            {
+              "Line": 517,
+              "Offset": 53,
+              "EndOffset": 55,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 13
+            },
+            {
+              "Line": 517,
+              "Offset": 53,
+              "EndOffset": 121,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void CasePilot.Api.Services.AuthService::.ctor(CasePilot.Api.Storage.CasePilotDbContext,CasePilot.Api.Services.Interfaces.IJwtTokenService,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Logging.ILogger`1<CasePilot.Api.Services.AuthService>)": {
+          "Lines": {
+            "18": 22,
+            "19": 22,
+            "20": 22,
+            "21": 22,
+            "22": 22,
+            "23": 22,
+            "24": 22,
+            "25": 22,
+            "26": 22,
+            "27": 22,
+            "28": 22
+          },
+          "Branches": []
+        }
+      }
+    }
+  }
+}

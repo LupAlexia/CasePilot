@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dotnet ef *)",
+      "Bash(dotnet build *)",
+      "Bash(dotnet test *)",
+      "Bash(npm test *)",
+      "Bash(dotnet --version)",
+      "Bash(git rm *)",
+      "Bash(git add *)",
+      "Bash(git -c user.name=alexia -c user.email=alexiacarina46@gmail.com commit -q -m 'Add deployment config \\(Render Docker backend + Vercel frontend\\) *)"
+    ]
+  }
+}

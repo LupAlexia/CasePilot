@@ -1,0 +1,33 @@
+# ── .NET ─────────────────────────────────────────────────────
+[Bb]in/
+[Oo]bj/
+.vs/
+*.user
+*.suo
+
+# Local SQLite database (re-created + seeded on startup)
+casepilot.db
+casepilot.db-*
+**/casepilot.db
+**/casepilot.db-*
+
+# Generated demo documents (re-created on startup)
+Backend/CasePilot.Api/SeedDocuments/
+
+# Secrets — keep local dev secrets off GitHub
+appsettings.Development.json
+
+# ── Node / frontend ──────────────────────────────────────────
+node_modules/
+dist/
+coverage/
+test-results/
+playwright-report/
+.vscode/
+.DS_Store
+
+# Vite / TS build cache
+*.tsbuildinfo
+
+# Local editor / tool settings
+.claude/settings.local.json
